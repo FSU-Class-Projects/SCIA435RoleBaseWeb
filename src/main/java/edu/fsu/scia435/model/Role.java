@@ -3,15 +3,13 @@ package edu.fsu.scia435.model;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
-public class role {
+public class Role {
 
     @Id
     @GeneratedValue(generator = "system-uuid")
@@ -24,4 +22,7 @@ public class role {
 
     private Date createdAt;
     private Date updatedAt;
+
+    @OneToMany(mappedBy = "role")
+    private List<User> users;
 }
